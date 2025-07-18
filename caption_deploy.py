@@ -112,23 +112,3 @@ def captioning(request: CaptionRequest):
 
     except Exception as e:
         return CaptionResponse(id=request.id, caption=f"Error: {str(e)}")
-
-
-# =============================================================================
-# HEALTH CHECK ENDPOINT
-# =============================================================================
-
-
-@app.function(image=base_image)
-@modal.fastapi_endpoint(method="GET", label="health")
-def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy", "message": "Image captioning API is running"}
-
-
-if __name__ == "__main__":
-    print("Image Captioning API ready for deployment!")
-    print("\nCAPTIONING ENDPOINT:")
-    print("- /captioning (POST) - Caption with GPT-4o")
-    print("\nUTILITY ENDPOINTS:")
-    print("- /health (GET) - Health check")
