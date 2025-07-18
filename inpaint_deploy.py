@@ -139,7 +139,6 @@ def inpaint(request: InpaintRequest):
                 mask_image=mask,
                 num_inference_steps=20,
                 guidance_scale=7.5,
-                generator=torch.Generator(device="cuda").manual_seed(42),
             ).images[0]
 
         # Convert to base64
